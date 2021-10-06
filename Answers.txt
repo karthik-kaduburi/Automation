@@ -1,25 +1,30 @@
-1.What other tests would you suggest could be written? You do not need to write them out in detail or code them.
+1.Identify all the possible test scenarios for the booking but automate
+only few priority scenario’s (possible for you in 2- 3 hours) which are critical to
+be passed so that the software product can be deployed to the production.
 
-Negative Testing:
+Test case creation:
 The core part of testing any form field is error entry validation, as there are many form fields on UI
-we can have test cases based on negative entry with various selection criteria( for e.g application type is joint 
-and dependents is 0,entry of maximum amount).
+we can have test cases based on negative entry with various selection criteria( 
+for e.g 
+-> departure city should not be displayed
+inside destination city dropdown after selection of departure city.
+->Check whether the flight details selected by the user is actually displayed in the next page.
+->Check whether the cost of travel selected by the user is actually displayed in the next page.
+->Check whether the Expiry date of the card used is expired.
+->Check whether the card number is a valid one and a validation with respect to number of digits.
+->Check whether the user entries does not contain any special characters for fields like name.
+
 This will cover the edge cases of validation.
 
 Mandatory Field Coverage:
-The living expenses field is mandatory, we can have a testcase to check whether the 
-user is able to work out estimate without entering living expenses field.
+The card type, card number fields are mandatory to book a flight, we can have a testcase to check whether the 
+user is able to book a flight without entering these mandatory fields.
 
-Limit Coverage:
-The conditions of having income>expenditure and expenditure>income should be included 
-based on business rules. The clarity of this limit would enable us to write and test 
-more number of test cases.
+Test Coverage:
+The values which are displayed on the confirmation page can be validated which
+include the amount, card number, expiration and Date of payment.
 
-other Fields:
-The test cases can be included to validate the functionality of other fields on the
-home page of ANZ based on given requirement.
-
-2.If this test was part of a much larger test set, how would you speed it up?
+2.If this test was part of a much larger test set, how to speed it up and improve the Script health?
 
 ->Avoiding code redundancy is so important to improve the scalability of any automation code.
 ->Reusing the no of steps in Cucumber across webpages will give the automation tester a clarity of thought.
@@ -27,14 +32,9 @@ home page of ANZ based on given requirement.
 to frame and store the xpaths accordingly.
 ->Limited and accurate usage of implicit and explicit waits.
 ->clearing cache whenever a webdriver is loaded.
-->Including basic methods in a single class file and inheriting the methods across reposity will reduce
+->Including basic methods in a single class file and inheriting the methods across repository will reduce
 the amount of automation code.
-
-3.Sometimes UI tests can fail unpredictably. For example, 
-the page may not have fully loaded before test automation attempts to click a button on a webpage.
-How would you improve reliability of these tests?
-
-Using appropriate wait time to allow the page to fully load can avoid such failures of automation scripts.
+->Using appropriate wait time to allow the page to fully load can avoid such failures of automation scripts.
 Its a good practise to add explicit wait to confirm the page load 
 with accurate wait time whereever it is required.
 We can also use javascript executor to know whether the page is fully loaded
